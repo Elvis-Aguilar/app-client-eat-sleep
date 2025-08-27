@@ -1,0 +1,44 @@
+<div class="p-6">
+  <h2 class="text-3xl font-bold mb-8 text-center text-primary">
+    Hoteles Recomendados
+  </h2>
+
+  <!-- Grid de cards -->
+  <div
+    class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto"
+  >
+    <!-- Card 1 -->
+    @for (hotel of hotels(); track hotel.id) {
+
+    <div
+      class="card bg-base-100 shadow-md hover:shadow-xl transition rounded-xl"
+    >
+      <figure>
+        <img
+          [src]="getRandomUrl()"
+          alt="Shoes"
+          class="h-48 w-full object-cover rounded-t-xl"
+        />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          {{ hotel.name }}
+          <span class="badge badge-secondary text-sm">
+            tel:{{ hotel.phone }}
+          </span>
+        </h2>
+        <p>
+          {{ hotel.address }}
+          <br />
+          total habitaciones: {{ hotel.totalRooms }}
+        </p>
+        <div class="card-actions justify-end">
+          <div class="badge badge-outline">Reservar</div>
+          <div class="badge badge-outline">Ver Opiniones</div>
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+</div>
