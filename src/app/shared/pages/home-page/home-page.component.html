@@ -15,7 +15,7 @@
     >
       <figure>
         <img
-          [src]="getRandomUrl()"
+          [src]="hotel.imageUrl"
           alt="Shoes"
           class="h-48 w-full object-cover rounded-t-xl"
         />
@@ -33,8 +33,8 @@
           total habitaciones: {{ hotel.totalRooms }}
         </p>
         <div class="card-actions justify-end">
-          <div class="badge badge-outline">Reservar</div>
-          <div class="badge badge-outline">Ver Opiniones</div>
+          <button class="btn btn-primary btn-sm">Reservar</button>
+          <button class="btn btn-outline btn-sm" (click)="clickGoOpinions(hotel.id)">Ver Opiniones</button>
         </div>
       </div>
     </div>

@@ -8,6 +8,13 @@ const reviewsRoutes: Routes = [
         (m) => m.HomePageComponent
       ),
   },
+  {
+    path: 'opinions/:id',
+    loadComponent: () =>
+      import('./pages/opinions-page/opinions-page.component').then(
+        (m) => m.OpinionsPageComponent
+      ),
+  }
 ];
 
 export const REVIEWS_ROUTES: Routes = [

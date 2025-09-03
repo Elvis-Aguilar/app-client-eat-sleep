@@ -12,6 +12,8 @@ export const INITIAL_STATE: Auth = {
         email: "",
         cui:"",
         active:false,
+        employeeId: '',
+        customerId: '',
         roleName: Rol.CLIENTE,
     }
 };

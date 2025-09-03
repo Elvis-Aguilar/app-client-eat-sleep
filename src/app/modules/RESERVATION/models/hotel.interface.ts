@@ -1,7 +1,8 @@
 export interface Hotel {
-  id: number;
+  id: string;
   name: string;
   address: string;
   phone: string;
   totalRooms: number;
+  imageUrl: string;
 }
