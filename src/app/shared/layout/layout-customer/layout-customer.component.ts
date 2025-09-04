@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { AuthStore } from 'app/store/auth.store';
 
 @Component({
   selector: 'app-layout-customer',
-  imports: [RouterModule],
+  imports: [RouterModule, RouterLink],
   templateUrl: './layout-customer.component.html',
 })
 export class LayoutCustomerComponent { 
