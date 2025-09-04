@@ -9,7 +9,8 @@ export class ApiConfigService {
     private readonly API_BASE = environment.API_ROOT;
     private readonly API_BASE_AUTH = `${this.API_BASE}/auth-identity/v1`;
     private readonly API_BASE_HOTEL = `${this.API_BASE}/hotel/v1`;
-    public readonly API_BASE_REVIEWS = `${this.API_BASE}/reviews/v1`;
+    private readonly API_BASE_REVIEWS = `${this.API_BASE}/reviews/v1`;
+    private readonly API_BASE_RESTAURANT = `${this.API_BASE}/restaurant/v1`;
 
     
     
@@ -23,6 +24,10 @@ export class ApiConfigService {
     // reviews
     public readonly API_REVIEWS = `${this.API_BASE_REVIEWS}/reviews`;
     public readonly API_REVIEWS_HOTEL = `${this.API_REVIEWS}/hotel`;
+    public readonly API_REVIEWS_RESTAURANT = `${this.API_REVIEWS}/restaurant`;
+
+    // restaurant
+    public readonly API_RESTAURANT = `${this.API_BASE_RESTAURANT}/restaurants`;
     
 
     

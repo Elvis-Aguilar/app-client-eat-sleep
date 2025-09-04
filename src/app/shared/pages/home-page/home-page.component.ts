@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UrlsUtils } from '@shared/utils/urls';
 import { Hotel } from 'app/modules/RESERVATION/models/hotel.interface';
 import { HotelService } from 'app/modules/RESERVATION/services/hotel.service';
+import { Restaurant } from 'app/modules/REVIEWS/models/restaurant.interface';
+import { RestaurantService } from 'app/modules/REVIEWS/services/restaurant.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,15 +15,18 @@ export class HomePageComponent {
   // inyectar el servicios
   private readonly hotelService = inject(HotelService);
   private readonly route = inject(Router);
+  private readonly restaurantService = inject(RestaurantService);
 
   // utils
   urlsUtils = UrlsUtils;
 
   // arreglo de hoteles
   hotels = signal<Hotel[]>([]);
+  restaurants = signal<Restaurant[]>([]);
 
   ngOnInit(): void {
     this.getAllHotels();
+    this.getAllRestaurants();
   }
 
   getAllHotels() {
@@ -36,6 +41,18 @@ export class HomePageComponent {
     });
   }
 
+  getAllRestaurants() {
+    this.restaurantService.getAllRestaurants().subscribe({
+      next: (restaurants) => {
+        this.restaurants.set(restaurants);
+        this.addImageRandomRestaurant();
+      },
+      error: (error) => {
+        console.error('Error fetching restaurants:', error);
+      },
+    });
+  }
+
   addImageRandomHotel() {
     this.hotels.update((currentHotels) =>
       currentHotels.map((hotel) => ({
@@ -45,7 +62,20 @@ export class HomePageComponent {
     );
   }
 
-  clickGoOpinions(hotelId: string) {
-    this.route.navigate(['reviews/opinions', hotelId]);
+  addImageRandomRestaurant() {
+    this.restaurants.update((currentRestaurants) =>
+      currentRestaurants.map((restaurant) => ({
+        ...restaurant,
+        imageUrl: this.urlsUtils.getRandomUrlRestaurant(),
+      }))
+    );
+  }
+
+  clickGoOpinionsHotel(hotelId: string) {
+    this.route.navigate(['reviews/opinions/hotel', hotelId]);
+  }
+
+  clickGoOpinionsRestaurant(hotelId: string) {
+    this.route.navigate(['reviews/opinions/restaurant', hotelId]);
   }
 }

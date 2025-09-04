@@ -9,12 +9,19 @@ const reviewsRoutes: Routes = [
       ),
   },
   {
-    path: 'opinions/:id',
+    path: 'opinions/hotel/:id',
     loadComponent: () =>
       import('./pages/opinions-page/opinions-page.component').then(
         (m) => m.OpinionsPageComponent
       ),
-  }
+  },
+  {
+    path: 'opinions/restaurant/:id',
+    loadComponent: () =>
+      import('./pages/opinions-restaurant/opinions-restaurant.component').then(
+        (m) => m.OpinionsRestaurantComponent
+      ),
+  },
 ];
 
 export const REVIEWS_ROUTES: Routes = [
