@@ -2,32 +2,32 @@
   <!-- Encabezado -->
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-3xl font-bold text-primary">
-      {{ hotel()?.name }}
+      {{ room()?.roomNumber }}
     </h2>
 
     <div class="flex gap-2">
       <button
-        class="btn btn-accent text-sm px-4 py-2 rounded-lg shadow"
+        class="btn btn-outline btn-accent text-sm px-4 py-2 rounded-lg shadow"
         (click)="goRooms()"
       >
-        Ver habitaciones
+        Reservar
       </button>
     </div>
   </div>
 
-  <p class="text-gray-600 mb-2">{{ hotel()?.address }}</p>
-  <p class="mb-4">Tel: {{ hotel()?.phone }}</p>
+  <p class="text-gray-600 mb-2">{{ room()?.description }}</p>
+  <p class="mb-4 mt-2">Precio por noche: <span class="badge badge-primary"> {{ room()?.pricePerDay | currency : "Q" : "symbol-narrow" : "1.2-2" }} </span></p>
 
   <!-- Imagen -->
   <img
-    [src]="hotelImageUrl"
+    [src]="roomImageUrl"
     alt="Hotel"
     class="rounded-xl shadow-md w-full h-64 object-cover mb-6"
   />
 
   <!-- Info adicional -->
   <div class="mb-6">
-    <p><strong>Total habitaciones:</strong> {{ hotel()?.totalRooms }}</p>
+    <p><strong>Capacidad:</strong> {{ room()?.capacity }}</p>
   </div>
 
   <!-- Comentarios -->

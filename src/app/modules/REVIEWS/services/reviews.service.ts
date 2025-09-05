@@ -14,6 +14,7 @@ export class ReviewsService {
   private readonly API_REVIEWS_HOTEL = this.apiConfigService.API_REVIEWS_HOTEL;
   private readonly API_REVIEWS = this.apiConfigService.API_REVIEWS;
   private readonly API_REVIEWS_RESTAURANT = this.apiConfigService.API_REVIEWS_RESTAURANT;
+  private readonly API_REVIEWS_ROOM = this.apiConfigService.API_REVIEWS_ROOM;
 
   constructor() {}
 
@@ -22,7 +23,13 @@ export class ReviewsService {
   }
 
   getAllRestaurant(idRestaurant: string): Observable<Review[]> {
-    return this._http.get<Review[]>(`${this.API_REVIEWS_RESTAURANT}/${idRestaurant}`);
+    return this._http.get<Review[]>(
+      `${this.API_REVIEWS_RESTAURANT}/${idRestaurant}`
+    );
+  }
+
+  getAllRooms(roomId: string): Observable<Review[]> {
+    return this._http.get<Review[]>(`${this.API_REVIEWS_ROOM}/${roomId}`);
   }
 
   saveReview(review: NewReview): Observable<void> {

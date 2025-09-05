@@ -8,6 +8,13 @@ const reservationRoutes: Routes = [
         (m) => m.HomePageComponent
       ),
   },
+  {
+    path: 'hotel/rooms/:id',
+    loadComponent: () =>
+      import('./pages/rooms-page/rooms-page.component').then(
+        (m) => m.RoomsPageComponent
+      ),
+  },
 ];
 
 export const RESERVATION_ROUTES: Routes = [

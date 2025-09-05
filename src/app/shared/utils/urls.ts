@@ -1,11 +1,11 @@
 export class UrlsUtils {
   static listUrls: string[] = [
-    'https://www.momondo.es/himg/63/d1/0a/expediav2-51060-3d808d-232963.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_EEIqfQXlCdC484ypMPgIBqoFL5exw-0Ag&s',
-    'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/87/22/be/hotel-victorias.jpg?w=1200&h=-1&s=1',
-    'https://cdn0.uncomo.com/es/posts/1/9/2/servicios_de_cafeteria_47291_12_600.jpg',
-    'https://media-cdn.tripadvisor.com/media/photo-s/2b/52/75/c5/caption.jpg',
-    'https://image-tc.galaxy.tf/wijpeg-dmgseqrawzguu07plej7lstz4/garden-view-double-room_standard.jpg?crop=134%2C0%2C1653%2C1240',
+    'https://digital.ihg.com/is/image/ihg/garner-exterior-4x3',
+    'https://www.guatemala.com/fotos/201710/Casa-Vieja-Lodge2-885x500.jpg',
+    'https://www.guatemala.com/fotos/201705/Costa-Bella1-885x500.jpg',
+    'https://www.guatemala.com/fotos/201702/Hawaiian-Hotel.jpg',
+    'https://www.guatemala.com/fotos/201702/Paredon-Surf-885x500.jpg',
+    'https://media-cdn.tripadvisor.com/media/photo-s/0e/d8/03/4c/pool-with-dining-area.jpg'
   ];
 
   // img Restaurants
@@ -16,7 +16,20 @@ export class UrlsUtils {
     'https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2024/07/30/2213/PTYUB-P0277-American-Bazaar-Dining-Area.jpg/PTYUB-P0277-American-Bazaar-Dining-Area.16x9.jpg',
     'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2024/06/prosecco.jpg?fit=1500%2C1000&ssl=1',
     'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2021/09/11/16313139674620.jpg',
-    'https://image-tc.galaxy.tf/wijpeg-83ujmoda2l0jj70cm9omdyf67/phdl-restaurante-1.jpg?width=1920'
+    'https://image-tc.galaxy.tf/wijpeg-83ujmoda2l0jj70cm9omdyf67/phdl-restaurante-1.jpg?width=1920',
+  ];
+
+  // img rooms
+  static listUrlsRooms: string[] = [
+    'https://www.cataloniahotels.com/es/blog/wp-content/uploads/2024/01/tipos-habitaciones-hotel.jpg',
+    'https://www.xotels.com/wp-content/uploads/2022/07/lodge-room-xotels-hote-managemen-company.webp',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGWlTCwEkAOCrePzcsNzaqbQJqnjs9CqtEJQ&s',
+    'https://www.hola.com/horizon/original_aspect_ratio/a628b238aa65-habitaciones-hotel-18a-a.jpg',
+    'https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2021/01/07/1717/Hyatt-Regency-Mexico-City-P796-View-King-Guestroom-Bed.jpg/Hyatt-Regency-Mexico-City-P796-View-King-Guestroom-Bed.16x9.jpg?imwidth=1920',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhv6ehLEqKGY67eUPwXBOI3y_eaiWhPZCydNA2SyjAAITcrKn3AwW1NcBLSrWPi4bCYvw&usqp=CAU',
+    'https://media.revistaad.es/photos/65c21a5605ba5d3cad2a23ba/16:9/w_2560%2Cc_limit/atr.royalmansion-bedroom2-mr.jpg',
+    'https://static.abc.es/Media/201504/27/hotel12--644x362.jpg',
+    'https://www.hotelescolsubsidio.com/media/uploads/galeriahabitaciones/torre-palmas-habitacion-penalisa-2.jpg?q=pr:sharp/rs:fill/w:740/h:525/f:jpg'
   ];
 
   public static getRandomUrl(): string {
@@ -25,7 +38,16 @@ export class UrlsUtils {
   }
 
   public static getRandomUrlRestaurant(): string {
-    const randomIndex = Math.floor(Math.random() * this.listUrlsRestaurants.length);
+    const randomIndex = Math.floor(
+      Math.random() * this.listUrlsRestaurants.length
+    );
     return this.listUrlsRestaurants[randomIndex];
+  }
+
+  public static getRandomUrlRoom(): string {
+    const randomIndex = Math.floor(
+      Math.random() * this.listUrlsRooms.length
+    );
+    return this.listUrlsRooms[randomIndex];
   }
 }

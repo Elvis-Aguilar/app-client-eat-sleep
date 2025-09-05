@@ -1,30 +1,30 @@
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UrlsUtils } from '@shared/utils/urls';
-import { Hotel } from 'app/modules/RESERVATION/models/hotel.interface';
-import { HotelService } from 'app/modules/RESERVATION/services/hotel.service';
-import { NewReview, Review } from '../../models/reviews.interface';
 import { LocalStorageService } from '@shared/services/local-storage.service';
-import { Session } from 'app/modules/session/models/auth';
-import { CommonModule, NgClass } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { HotelService } from 'app/modules/RESERVATION/services/hotel.service';
 import { AlertStore } from 'app/store/alert.store';
 import { ReviewsService } from '../../services/reviews.service';
 import { HandlerError } from '@shared/utils/handlerError';
+import { UrlsUtils } from '@shared/utils/urls';
+import { NewReview, Review } from '../../models/reviews.interface';
+import { Room } from 'app/modules/RESERVATION/models/room.interface';
+import { Session } from 'app/modules/session/models/auth';
+import { NgClass, CommonModule, CurrencyPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-opinions-page',
-  imports: [NgClass, CommonModule, FormsModule],
-  templateUrl: './opinions-page.component.html',
+  selector: 'app-opinios-rooms',
+  imports: [NgClass, CommonModule, FormsModule, CurrencyPipe],
+  templateUrl: './opinios-rooms.component.html',
 })
-export class OpinionsPageComponent {
+export class OpiniosRoomsComponent {
   // inyectar el servicios
   private readonly hotelService = inject(HotelService);
   private readonly route = inject(ActivatedRoute);
   private readonly localStorageService = inject(LocalStorageService);
   private readonly alertStore = inject(AlertStore);
   private readonly reviewsService = inject(ReviewsService);
-  private readonly router = inject(Router)
+  private readonly router = inject(Router);
 
   // hangleerError
   private HandlerError = HandlerError;
@@ -35,20 +35,20 @@ export class OpinionsPageComponent {
   // arreglo de reviews by id del hotel
   reviews = signal<Review[]>([]);
 
-  // hotel seleccionado
-  hotel = signal<Hotel | null>(null);
+  // room seleccionado
+  room = signal<Room | null>(null);
 
   pinionId!: string;
-  hotelImageUrl: string = '';
+  roomImageUrl: string = '';
   session: Session = this.localStorageService.getState().session;
+
   newReview = signal<NewReview>({
     comment: '',
     rating: 0,
     customerId: this.session.customerId,
     refenceId: this.pinionId,
-    typeReference: 'hotel',
+    typeReference: 'room',
   });
-
   constructor() {}
 
   ngOnInit(): void {
@@ -59,7 +59,7 @@ export class OpinionsPageComponent {
       this.getReviewsByHotelId();
     });
 
-    this.hotelImageUrl = this.urlsUtils.getRandomUrl();
+    this.roomImageUrl = this.urlsUtils.getRandomUrlRoom();
   }
 
   cleanForm() {
@@ -68,7 +68,7 @@ export class OpinionsPageComponent {
       rating: 0,
       customerId: this.session.customerId,
       refenceId: this.pinionId,
-      typeReference: 'hotel',
+      typeReference: 'room',
     });
   }
 
@@ -104,21 +104,21 @@ export class OpinionsPageComponent {
 
   // get hotel by id
   getHotelById() {
-    this.hotelService.getHotelById(this.pinionId).subscribe({
-      next: (hotel) => {
-        this.hotel.set(hotel);
+    this.hotelService.getRoomById(this.pinionId).subscribe({
+      next: (room) => {
+        this.room.set(room);
       },
       error: (error) => {
-        this.hotel.set(null);
-        const msgDefault = 'Error al obtener la información del hotel. ';
-        this.HandlerError.handleError(error, this.alertStore, msgDefault);  
+        this.room.set(null);
+        const msgDefault = 'Error al obtener la información de la habitacion. ';
+        this.HandlerError.handleError(error, this.alertStore, msgDefault);
       },
     });
   }
 
   // get opiniones de un hotel segun su id
   getReviewsByHotelId() {
-    this.reviewsService.getAllHotels(this.pinionId).subscribe({
+    this.reviewsService.getAllRooms(this.pinionId).subscribe({
       next: (reviews) => {
         this.reviews.set(reviews);
       },
@@ -129,7 +129,7 @@ export class OpinionsPageComponent {
     });
   }
 
-  goRooms(){
+  goRooms() {
     this.router.navigate(['/reservations/hotel/rooms', this.pinionId]);
   }
 }
