@@ -5,7 +5,7 @@ export class UrlsUtils {
     'https://www.guatemala.com/fotos/201705/Costa-Bella1-885x500.jpg',
     'https://www.guatemala.com/fotos/201702/Hawaiian-Hotel.jpg',
     'https://www.guatemala.com/fotos/201702/Paredon-Surf-885x500.jpg',
-    'https://media-cdn.tripadvisor.com/media/photo-s/0e/d8/03/4c/pool-with-dining-area.jpg'
+    'https://media-cdn.tripadvisor.com/media/photo-s/0e/d8/03/4c/pool-with-dining-area.jpg',
   ];
 
   // img Restaurants
@@ -29,7 +29,22 @@ export class UrlsUtils {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhv6ehLEqKGY67eUPwXBOI3y_eaiWhPZCydNA2SyjAAITcrKn3AwW1NcBLSrWPi4bCYvw&usqp=CAU',
     'https://media.revistaad.es/photos/65c21a5605ba5d3cad2a23ba/16:9/w_2560%2Cc_limit/atr.royalmansion-bedroom2-mr.jpg',
     'https://static.abc.es/Media/201504/27/hotel12--644x362.jpg',
-    'https://www.hotelescolsubsidio.com/media/uploads/galeriahabitaciones/torre-palmas-habitacion-penalisa-2.jpg?q=pr:sharp/rs:fill/w:740/h:525/f:jpg'
+    'https://www.hotelescolsubsidio.com/media/uploads/galeriahabitaciones/torre-palmas-habitacion-penalisa-2.jpg?q=pr:sharp/rs:fill/w:740/h:525/f:jpg',
+  ];
+
+  // img dishes
+  static listUrlsDishes: string[] = [
+    'https://cdn.shopify.com/s/files/1/0469/3193/files/fajitas_de_camarones_large.jpg?v=1583948341',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7EzRovv1wRmkPCU2-rIGZ7vQWOoFJl2zegQ&s',
+    'https://media.istockphoto.com/id/104704117/es/foto/restaurante-placas-de.jpg?s=612x612&w=0&k=20&c=98vr9Kq-s9lpto15bX8hs0Okg-Drild_0g0cK8J0hEY=',
+    'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/93/d8/73/parrillada.jpg',
+    'https://www.laparcelacr.com/wp-content/uploads/2014/11/platos-fuertes-menu.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTENiJ-vRm62iSW9gwtXKiYd4Cw6amazhkU5Q&s',
+    'https://www.guatemala.com/fotos/201710/Palermo-885x500.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTm7KZl79yp8Hh8WOP8aRcoTYzaf3_xpXxEA&s',
+    'https://media-cdn.tripadvisor.com/media/photo-s/13/a7/8b/74/exquisitos-platillos.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-O-ssuUAn0juW2zw1Kt6q-EHDXiv48bXnw&s',
+    'https://www.guatemala.com/fotos/2024/11/Restaurantes-de-comida-tipica-en-Guatemala-que-deberias-visitar-4-885x500.jpg',
   ];
 
   public static getRandomUrl(): string {
@@ -45,9 +60,12 @@ export class UrlsUtils {
   }
 
   public static getRandomUrlRoom(): string {
-    const randomIndex = Math.floor(
-      Math.random() * this.listUrlsRooms.length
-    );
+    const randomIndex = Math.floor(Math.random() * this.listUrlsRooms.length);
     return this.listUrlsRooms[randomIndex];
+  }
+
+  public static getRandomUrlDish(): string {
+    const randomIndex = Math.floor(Math.random() * this.listUrlsDishes.length);
+    return this.listUrlsDishes[randomIndex];
   }
 }

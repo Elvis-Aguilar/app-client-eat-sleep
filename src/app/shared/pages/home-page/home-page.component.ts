@@ -78,4 +78,8 @@ export class HomePageComponent {
   clickGoOpinionsRestaurant(hotelId: string) {
     this.route.navigate(['reviews/opinions/restaurant', hotelId]);
   }
+
+  clickGoOpinionsMenu(restaurantId: string) {
+    this.route.navigate(['reviews/menu/dishes', restaurantId]);
+  }
 }

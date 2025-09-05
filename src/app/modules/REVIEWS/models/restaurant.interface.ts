@@ -9,3 +9,11 @@ export interface Restaurant {
   hotelId: string;
   imageUrl: string;
 }
+
+export interface Dishes {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  urlImage: string;
+}

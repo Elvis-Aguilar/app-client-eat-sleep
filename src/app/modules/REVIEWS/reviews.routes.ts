@@ -32,8 +32,16 @@ const reviewsRoutes: Routes = [
   {
     path: 'opinions/dishes/:id',
     loadComponent: () =>
-      import('./pages/opinios-rooms/opinios-rooms.component').then(
-        (m) => m.OpiniosRoomsComponent
+      import('./pages/opinions-dishes/opinions-dishes.component').then(
+        (m) => m.OpinionsDishesComponent
+      ),
+  },
+
+  {
+    path: 'menu/dishes/:id',
+    loadComponent: () =>
+      import('./pages/menu-page/menu-page.component').then(
+        (m) => m.MenuPageComponent
       ),
   },
 ];

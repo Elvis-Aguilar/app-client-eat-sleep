@@ -26,9 +26,11 @@ export class ApiConfigService {
     public readonly API_REVIEWS_HOTEL = `${this.API_REVIEWS}/hotel`;
     public readonly API_REVIEWS_RESTAURANT = `${this.API_REVIEWS}/restaurant`;
     public readonly API_REVIEWS_ROOM = `${this.API_REVIEWS}/room`;
+    public readonly API_REVIEWS_DISHES = `${this.API_REVIEWS}/dishes`;
 
     // restaurant
     public readonly API_RESTAURANT = `${this.API_BASE_RESTAURANT}/restaurants`;
+    public readonly API_RESTAURANT_DISHES = `${this.API_BASE_RESTAURANT}/dishes`;
     
 
     
