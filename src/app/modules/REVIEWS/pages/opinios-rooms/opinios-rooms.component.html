@@ -8,7 +8,7 @@
     <div class="flex gap-2">
       <button
         class="btn btn-outline btn-accent text-sm px-4 py-2 rounded-lg shadow"
-        (click)="goRooms()"
+        (click)="openModalReservation()"
       >
         Reservar
       </button>
@@ -101,3 +101,8 @@
     <button (click)="saveReview()" class="btn btn-primary">Publicar</button>
   </form>
 </div>
+
+
+<dialog #modalReservation id="my_modal_1" class="modal">
+  <app-modal-reservation  (close)="closeModalReservation()" />
+</dialog>

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '@shared/services/local-storage.service';
 import { HotelService } from 'app/modules/RESERVATION/services/hotel.service';
@@ -11,13 +11,17 @@ import { Room } from 'app/modules/RESERVATION/models/room.interface';
 import { Session } from 'app/modules/session/models/auth';
 import { NgClass, CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ModalReservationComponent } from "app/modules/RESERVATION/components/modal-reservation/modal-reservation.component";
 
 @Component({
   selector: 'app-opinios-rooms',
-  imports: [NgClass, CommonModule, FormsModule, CurrencyPipe],
+  imports: [NgClass, CommonModule, FormsModule, CurrencyPipe, ModalReservationComponent],
   templateUrl: './opinios-rooms.component.html',
 })
 export class OpiniosRoomsComponent {
+
+  @ViewChild('modalReservation') modalReservation!: ElementRef<HTMLDialogElement>;
+
   // inyectar el servicios
   private readonly hotelService = inject(HotelService);
   private readonly route = inject(ActivatedRoute);
@@ -131,5 +135,13 @@ export class OpiniosRoomsComponent {
 
   goRooms() {
     this.router.navigate(['/reservations/hotel/rooms', this.pinionId]);
+  }
+
+  openModalReservation() {
+    this.modalReservation.nativeElement.showModal();
+  }
+
+  closeModalReservation() {
+    this.modalReservation.nativeElement.close();
   }
 }

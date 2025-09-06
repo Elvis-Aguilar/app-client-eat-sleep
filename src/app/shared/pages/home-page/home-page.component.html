@@ -33,7 +33,12 @@
           total habitaciones: {{ hotel.totalRooms }}
         </p>
         <div class="card-actions justify-end">
-          <button class="btn btn-primary btn-sm">Reservar</button>
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="goRooms(hotel.id)"
+          >
+            Reservar
+          </button>
           <button
             class="btn btn-outline btn-sm"
             (click)="clickGoOpinionsHotel(hotel.id)"

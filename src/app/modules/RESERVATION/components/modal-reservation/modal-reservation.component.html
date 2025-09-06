@@ -1,0 +1,91 @@
+<!-- Modal -->
+<input type="checkbox" id="reserve-modal" class="modal-toggle" />
+
+<div class="modal-box w-11/12 max-w-5xl">
+  <h3 class="font-bold text-2xl mb-4 text-primary">Reservar Habitación</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Lado izquierdo: Fechas reservadas -->
+    <div class="bg-base-200 rounded-lg p-4 overflow-y-auto max-h-80">
+      <h4 class="font-semibold mb-3">Fechas Ocupadas</h4>
+      <ul class="space-y-2 text-sm">
+        <!-- Ejemplo (dinámico con *ngFor) -->
+        <li class="p-2 bg-base-100 rounded-lg shadow-sm flex justify-between">
+          <span>10/09/2025 - 12/09/2025</span>
+          <span class="badge badge-error">Ocupado</span>
+        </li>
+        <li class="p-2 bg-base-100 rounded-lg shadow-sm flex justify-between">
+          <span>15/09/2025 - 18/09/2025</span>
+          <span class="badge badge-error">Ocupado</span>
+        </li>
+        <li class="p-2 bg-base-100 rounded-lg shadow-sm flex justify-between">
+          <span>20/09/2025 - 22/09/2025</span>
+          <span class="badge badge-error">Ocupado</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Lado derecho: Formulario -->
+    <div class="bg-base-200 rounded-lg p-4">
+      <h4 class="font-semibold mb-3">Nueva Reserva</h4>
+      <form class="space-y-4">
+        <!-- Fechas -->
+        <div>
+          <label class="label text-sm font-medium">Fecha de inicio</label>
+          <input type="date" class="input input-bordered w-full" required />
+        </div>
+
+        <div>
+          <label class="label text-sm font-medium">Fecha de fin</label>
+          <input type="date" class="input input-bordered w-full" required />
+        </div>
+
+        <!-- Precio -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="label text-sm font-medium">Precio por día</label>
+            <input
+              type="number"
+              class="input input-bordered w-full"
+              placeholder="0.00"
+              step="0.01"
+              disabled
+            />
+          </div>
+
+          <!-- Descuento -->
+          <div>
+            <label class="label text-sm font-medium">Descuento (%)</label>
+            <input
+              type="number"
+              class="input input-bordered w-full"
+              placeholder="0"
+              step="0.01"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- total -->
+        <div>
+          <label class="label text-sm font-medium">Total a pagar</label>
+          <input
+            type="number"
+            class="input input-bordered w-full"
+            placeholder="0.00"
+            step="0.01"
+            disabled
+          />
+        </div>
+
+        <!-- Botones -->
+        <div class="modal-action">
+          <label for="reserve-modal" class="btn btn-ghost" (click)="onClose()">Cancelar</label>
+          <button type="submit" class="btn btn-primary">
+            Confirmar Reserva
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
