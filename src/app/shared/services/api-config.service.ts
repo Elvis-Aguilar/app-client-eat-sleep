@@ -11,6 +11,7 @@ export class ApiConfigService {
     private readonly API_BASE_HOTEL = `${this.API_BASE}/hotel/v1`;
     private readonly API_BASE_REVIEWS = `${this.API_BASE}/reviews/v1`;
     private readonly API_BASE_RESTAURANT = `${this.API_BASE}/restaurant/v1`;
+    private readonly API_BASE_PROMOTION = `${this.API_BASE}/promotion/v1`;
 
     
     
@@ -33,5 +34,10 @@ export class ApiConfigService {
     public readonly API_RESTAURANT_DISHES = `${this.API_BASE_RESTAURANT}/dishes`;
     
 
+    // RESERVATION
+    public readonly API_RESERVATION = `${this.API_BASE_HOTEL}/reservations`
+
+    // promotions
+    public readonly API_PROMOTION = `${this.API_BASE_PROMOTION}/promotions`
     
 }
