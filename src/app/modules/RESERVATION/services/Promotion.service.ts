@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ApiConfigService } from '@shared/services/api-config.service';
 import { Observable } from 'rxjs';
-import { NewReservation, Reservation } from '../models/reservation.interface';
 import { Promotion } from '../models/promotion.interface';
 
 @Injectable({

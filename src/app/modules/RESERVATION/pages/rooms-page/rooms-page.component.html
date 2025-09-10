@@ -58,9 +58,19 @@
         </p>
         <div class="card-actions justify-end mt-2">
           @if (room.state === 'disponible') {
-          <button class="btn btn-primary btn-sm">Reservar</button>
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="openModalReservation(room)"
+          >
+            Reservar
+          </button>
           }
-          <button class="btn btn-outline btn-sm" (click)="clickGoOpinionsRoom(room.id)">Ver Opiniones</button>
+          <button
+            class="btn btn-outline btn-sm"
+            (click)="clickGoOpinionsRoom(room.id)"
+          >
+            Ver Opiniones
+          </button>
         </div>
       </div>
     </div>
@@ -68,3 +78,13 @@
     }
   </div>
 </div>
+
+<dialog #modalReservation id="my_modal_1" class="modal">
+  @if (room()) {
+  <app-modal-reservation
+    (close)="closeModalReservation()"
+    [roomId]="room()!.id"
+    [room]="room()"
+  />
+  }
+</dialog>

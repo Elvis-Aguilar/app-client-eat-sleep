@@ -16,7 +16,12 @@
   </div>
 
   <p class="text-gray-600 mb-2">{{ room()?.description }}</p>
-  <p class="mb-4 mt-2">Precio por noche: <span class="badge badge-primary"> {{ room()?.pricePerDay | currency : "Q" : "symbol-narrow" : "1.2-2" }} </span></p>
+  <p class="mb-4 mt-2">
+    Precio por noche:
+    <span class="badge badge-primary">
+      {{ room()?.pricePerDay | currency : "Q" : "symbol-narrow" : "1.2-2" }}
+    </span>
+  </p>
 
   <!-- Imagen -->
   <img
@@ -102,7 +107,10 @@
   </form>
 </div>
 
-
 <dialog #modalReservation id="my_modal_1" class="modal">
-  <app-modal-reservation  (close)="closeModalReservation()" [roomId]="pinionId"/>
+  <app-modal-reservation
+    (close)="closeModalReservation()"
+    [roomId]="pinionId"
+    [room]="room()"
+  />
 </dialog>

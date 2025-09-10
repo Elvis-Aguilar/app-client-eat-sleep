@@ -19,6 +19,10 @@
             </span>
             <span class="badge badge-error">Reservado</span>
           </li>
+          }@empty {
+          <li class="text-center text-base-content/70">
+            No hay reservas para esta habitación
+          </li>
           }
         </ul>
       </div>
@@ -119,23 +123,36 @@
         <!-- Fechas -->
         <div>
           <label class="label text-sm font-medium">Fecha de inicio</label>
-          <input type="date" class="input input-bordered w-full" required />
+          <input
+            type="date"
+            class="input input-bordered w-full"
+            required
+            #starDateInput
+            (change)="starDate.set(starDateInput.value)"
+          />
         </div>
 
         <div>
           <label class="label text-sm font-medium">Fecha de fin</label>
-          <input type="date" class="input input-bordered w-full" required />
+          <input
+            type="date"
+            class="input input-bordered w-full"
+            required
+            #endDateInput
+            (change)="endDate.set(endDateInput.value)"
+          />
         </div>
 
         <!-- Precio y Descuento -->
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="label text-sm font-medium">Precio por día</label>
+            <label class="label text-sm font-medium">Precio por día Q.</label>
             <input
               type="number"
               class="input input-bordered w-full"
               placeholder="0.00"
               step="0.01"
+              [value]="room()?.pricePerDay"
               disabled
             />
           </div>
@@ -146,6 +163,7 @@
               class="input input-bordered w-full"
               placeholder="0"
               step="0.01"
+              [value]="discount()"
               disabled
             />
           </div>
@@ -153,12 +171,13 @@
 
         <!-- Total -->
         <div>
-          <label class="label text-sm font-medium">Total a pagar</label>
+          <label class="label text-sm font-medium">Total a pagar Q.</label>
           <input
             type="number"
             class="input input-bordered w-full"
             placeholder="0.00"
             step="0.01"
+            [value]="total()"
             disabled
           />
         </div>
@@ -168,7 +187,11 @@
           <label for="reserve-modal" class="btn btn-ghost" (click)="onClose()"
             >Cancelar</label
           >
-          <button type="submit" class="btn btn-primary">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="saveReservation()"
+          >
             Confirmar Reserva
           </button>
         </div>

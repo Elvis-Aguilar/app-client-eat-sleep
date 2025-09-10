@@ -13,8 +13,8 @@ export interface Reservation {
 }
 
 export interface NewReservation {
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
     customerId: string;
     roomId: string;
 }
