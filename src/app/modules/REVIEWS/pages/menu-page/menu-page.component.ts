@@ -1,16 +1,28 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { RestaurantService } from '../../services/restaurant.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UrlsUtils } from '@shared/utils/urls';
 import { Dishes } from '../../models/restaurant.interface';
 import { CurrencyPipe, NgClass } from '@angular/common';
+import { PromotionsModalComponent } from '../../components/promotions-modal/promotions-modal.component';
 
 @Component({
   selector: 'app-menu-page',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, PromotionsModalComponent],
   templateUrl: './menu-page.component.html',
 })
 export class MenuPageComponent {
+  // ref modals
+  @ViewChild('modalReservation')
+  modalReservation!: ElementRef<HTMLDialogElement>;
+
+  // inyectar services
   private readonly router = inject(Router);
   private readonly restaurantService = inject(RestaurantService);
   private readonly route = inject(ActivatedRoute);
@@ -20,6 +32,7 @@ export class MenuPageComponent {
 
   pinionId!: string;
   dishes = signal<Dishes[]>([]);
+  dishe = signal<Dishes | null>(null);
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -51,5 +64,14 @@ export class MenuPageComponent {
 
   clickGoOpinionsDishes(disehId: string) {
     this.router.navigate(['reviews/opinions/dishes', disehId]);
+  }
+
+  closeModalReservation() {
+    this.modalReservation.nativeElement.close();
+  }
+
+  openModalReservation(dishe: Dishes) {
+    this.dishe.set(dishe);
+    this.modalReservation.nativeElement.showModal();
   }
 }

@@ -31,9 +31,16 @@
           <span class="font-bold badge badge-primary">{{
             dishe.price | currency : "Q" : "symbol-narrow" : "1.2-2"
           }}</span
-          >:
+          >
         </p>
         <div class="card-actions justify-end mt-2">
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="openModalReservation(dishe)"
+          >
+            promociones
+          </button>
+          
           <button
             class="btn btn-outline btn-sm"
             (click)="clickGoOpinionsDishes(dishe.id)"
@@ -47,3 +54,12 @@
     }
   </div>
 </div>
+
+<dialog #modalReservation id="my_modal_1" class="modal">
+  @if (dishe()) {
+  <app-promotions-modal
+    (close)="closeModalReservation()"
+    [disheId]="dishe()!.id"
+  />
+  }
+</dialog>
