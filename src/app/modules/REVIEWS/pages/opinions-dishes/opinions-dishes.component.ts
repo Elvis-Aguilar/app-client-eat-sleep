@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '@shared/services/local-storage.service';
 import { AlertStore } from 'app/store/alert.store';
@@ -11,13 +11,25 @@ import { Dishes } from '../../models/restaurant.interface';
 import { Session } from 'app/modules/session/models/auth';
 import { NgClass, CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PromotionsModalComponent } from '../../components/promotions-modal/promotions-modal.component';
 
 @Component({
   selector: 'app-opinions-dishes',
-  imports: [NgClass, CommonModule, FormsModule, CurrencyPipe],
+  imports: [
+    NgClass,
+    CommonModule,
+    FormsModule,
+    CurrencyPipe,
+    PromotionsModalComponent,
+  ],
   templateUrl: './opinions-dishes.component.html',
 })
 export class OpinionsDishesComponent {
+  // referencia al modal
+  @ViewChild('modalReservation')
+  modalReservation!: ElementRef<HTMLDialogElement>;
+
+  // injectar el servicios
   private readonly route = inject(ActivatedRoute);
   private readonly localStorageService = inject(LocalStorageService);
   private readonly alertStore = inject(AlertStore);
@@ -124,5 +136,13 @@ export class OpinionsDishesComponent {
         this.HandlerError.handleError(error, this.alertStore, msgDefault);
       },
     });
+  }
+
+  openModalReservation() {
+    this.modalReservation.nativeElement.showModal();
+  }
+
+  closeModalReservation() {
+    this.modalReservation.nativeElement.close();
   }
 }

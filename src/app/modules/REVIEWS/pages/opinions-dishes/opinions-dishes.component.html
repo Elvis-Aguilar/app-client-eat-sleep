@@ -4,6 +4,14 @@
     <h2 class="text-3xl font-bold text-primary">
       {{ dishe()?.name }}
     </h2>
+    <div class="flex gap-2">
+      <button
+        class="btn btn-outline btn-accent text-sm px-4 py-2 rounded-lg shadow"
+        (click)="openModalReservation()"
+      >
+        ver promociones
+      </button>
+    </div>
   </div>
 
   <p class="text-gray-600 mb-2">{{ dishe()?.description }}</p>
@@ -92,3 +100,10 @@
     <button (click)="saveReview()" class="btn btn-primary">Publicar</button>
   </form>
 </div>
+
+<dialog #modalReservation id="my_modal_1" class="modal">
+  <app-promotions-modal
+    (close)="closeModalReservation()"
+    [disheId]="dishe()!.id"
+  />
+</dialog>

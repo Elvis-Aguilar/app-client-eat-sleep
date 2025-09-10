@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 
 const reservationRoutes: Routes = [
   {
-    path: 'homepage',
+    path: 'my-reservations',
     loadComponent: () =>
-      import('./../../shared/pages/home-page/home-page.component').then(
-        (m) => m.HomePageComponent
-      ),
+      import(
+        './pages/my-reservations-page/my-reservations-page.component'
+      ).then((m) => m.MyReservationsPageComponent),
   },
   {
     path: 'hotel/rooms/:id',
@@ -20,7 +20,7 @@ const reservationRoutes: Routes = [
 export const RESERVATION_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: 'homepage',
+    redirectTo: 'my-reservations',
     pathMatch: 'prefix',
   },
   {
@@ -33,7 +33,7 @@ export const RESERVATION_ROUTES: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'homepage',
+    redirectTo: 'my-reservations',
     pathMatch: 'full',
   },
 ];

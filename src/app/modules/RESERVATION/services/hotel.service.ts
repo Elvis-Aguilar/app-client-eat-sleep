@@ -32,5 +32,9 @@ export class HotelService {
     return this._http.get<Room>(`${this.API_HOTEL_ROOMS}/${roomId}`);
   }
 
+  getAllRooms(): Observable<Room[]> {
+    return this._http.get<Room[]>(`${this.API_HOTEL_ROOMS}`);
+  }
+
 
 }

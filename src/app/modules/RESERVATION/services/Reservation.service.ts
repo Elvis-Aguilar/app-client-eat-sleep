@@ -34,4 +34,10 @@ export class ReservationService {
       `${this.API_RESERVATION}/rooms/${roomId}`
     );
   }
+
+  getReservationsByCustomerId(customerId: string): Observable<Reservation[]> {
+    return this._http.get<Reservation[]>(
+      `${this.API_RESERVATION}/customers/${customerId}`
+    );
+  }
 }

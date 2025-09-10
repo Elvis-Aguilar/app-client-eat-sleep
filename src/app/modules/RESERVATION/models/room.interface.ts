@@ -6,5 +6,6 @@ export interface Room {
     description: string;
     capacity: number;
     state:string;
+    hotelName:string;
     urlImage: string;
 }
