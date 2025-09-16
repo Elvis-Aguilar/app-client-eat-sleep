@@ -8,12 +8,12 @@ import {
 } from '../../models/reservation.interface';
 import { Room } from '../../models/room.interface';
 import { Session } from 'app/modules/session/models/auth';
-import { CurrencyPipe, DatePipe, NgClass, PercentPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-my-reservations-page',
-  imports: [DatePipe, NgClass, CurrencyPipe, PercentPipe],
+  imports: [DatePipe, NgClass, CurrencyPipe],
   templateUrl: './my-reservations-page.component.html',
 })
 export class MyReservationsPageComponent {

@@ -55,13 +55,25 @@ export class ModalReservationComponent {
 
   discount = signal<number>(0);
 
+  constructor() {
+    this.discount.set(0);
+    this.starDate.set('');
+    this.endDate.set('');
+  }
+
   ngOnInit(): void {
+    this.discount.set(0);
+    this.starDate.set('');
+    this.endDate.set('');
     this.getPromotionByRoomId();
     this.getReservationsByRoomId();
     this.getPromotionByCustomerId(this.session.customerId);
   }
 
   ngOnChanges(): void {
+    this.discount.set(0);
+    this.starDate.set('');
+    this.endDate.set('');
     this.getPromotionByRoomId();
     this.getReservationsByRoomId();
     this.getPromotionByCustomerId(this.session.customerId);
@@ -74,14 +86,14 @@ export class ModalReservationComponent {
   total = computed(() => {
     const start = this.starDate();
     const end = this.endDate();
-    
+
     if (!start || !end) return 0;
     // Normalizar la fecha actual en formato yyyy-MM-dd
-    const todayStr = this.getTodayStr()
-    
+    const todayStr = this.getTodayStr();
+
     // Validar que fecha inicio sea <= fecha final
-    if (start > end) return 0;    
-    
+    if (start > end) return 0;
+
     if (start < todayStr) return 0;
 
     // calcular diferencia en días (incluyendo el último día)
@@ -94,7 +106,7 @@ export class ModalReservationComponent {
 
     const subtotal = days * this.room()?.pricePerDay!;
     const discountAmount = subtotal * (this.discount() / 100);
-    
+
     return subtotal - discountAmount;
   });
 
@@ -168,7 +180,7 @@ export class ModalReservationComponent {
     }
 
     // Normalizar la fecha actual en formato yyyy-MM-dd
-     const todayStr = this.getTodayStr();
+    const todayStr = this.getTodayStr();
 
     // Validar que fecha inicio sea <= fecha final
     if (start > end) {
@@ -226,10 +238,10 @@ export class ModalReservationComponent {
   }
 
   getTodayStr(): string {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 }
